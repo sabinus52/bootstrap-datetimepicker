@@ -423,9 +423,16 @@
 
 		place: function(){
 			if(this.isInline) return;
-			var zIndex = parseInt(this.element.parents().filter(function() {
-				return $(this).css('z-index') != 'auto';
-			}).first().css('z-index'))+10;
+
+			var index_highest = 0;
+			$('div').each(function() {
+			    var index_current = parseInt($(this).css("zIndex"), 10);
+			    if(index_current > index_highest) {
+			        index_highest = index_current;
+			    }
+			});
+			var zIndex = index_highest + 10;
+
 			var offset, top, left;
 			if (this.component) {
 				offset = this.component.offset();
@@ -826,7 +833,11 @@
 							case 'today':
 								var date = new Date();
 								date = UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), 0);
-
+								
+                                                                // Respect startDate and endDate.
+                                                                if (date < this.startDate) date = this.startDate;
+							        else if (date > this.endDate) date = this.endDate;
+							        
 								this.viewMode = this.startViewMode;
 								this.showMode(0);
 								this._setDate(date);
@@ -1503,9 +1514,13 @@
 			var date = [],
 				seps = $.extend([], format.separators);
 			for (var i=0, cnt = format.parts.length; i < cnt; i++) {
-				if (seps.length)
-					date.push(seps.shift())
+				if (seps.length) {
+					date.push(seps.shift());
+				}
 				date.push(val[format.parts[i]]);
+			}
+			if (seps.length) {
+				date.push(seps.shift());
 			}
 			return date.join('');
 		},
