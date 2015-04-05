@@ -14,7 +14,7 @@ This project is a fork of [bootstrap-datepicker project](https://github.com/eter
 
 # Home
 
-As 'bootstrap-datetimepicker' is restricted to the date scope (day, month, year), this project aims to support too the time picking (hour, minutes).
+As 'bootstrap-datepicker' is restricted to the date scope (day, month, year), this project aims to support too the time picking (hour, minutes).
 
 
 # Screenshots
@@ -551,3 +551,7 @@ If your browser (or those of your users) is displaying characters wrong, chances
 ```html
 <script type="text/javascript" src="bootstrap-datetimepicker.de.js" charset="UTF-8"></script>
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/smalot/bootstrap-datetimepicker/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
