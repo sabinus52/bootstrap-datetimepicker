@@ -1,0 +1,44 @@
+{
+    "name" : "components/bootstrap-datetimepicker",
+    "description" : "Both Date and Time picker widget based on twitter bootstrap",
+    "type" : "component",
+    "homepage" : "http://www.malot.fr/bootstrap-datetimepicker/",
+    "license" : "Apache-2.0",
+    "authors" : [{
+            "name" : "Sebastien MALOT"
+        }
+    ],
+    "support" : {
+        "source" : "https://github.com/smalot/bootstrap-datetimepicker"
+    },
+    "keywords" : [
+        "bootstrap",
+        "jquery",
+        "date",
+        "time",
+        "datepicker",
+        "timepicker",
+        "datetime"
+    ],
+    "require" : {
+        "components/bootstrap" : ">=2.0, <4.0"
+    },
+    "suggest": {
+        "robloach/component-installer": "Allows installation of Components via Composer"
+    },
+    "extra" : {
+        "component" : {
+            "scripts" : [
+                "js/bootstrap-datetimepicker.js"
+            ],
+            "styles" : [
+                "css/bootstrap-datetimepicker.css"
+            ],
+            "files" : [
+                "js/*.js",
+                "js/locales/bootstrap-datetimepicker.*.js",
+                "css/*.css"
+            ]
+        }
+    }
+}
