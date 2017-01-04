@@ -157,6 +157,8 @@ The date format, combination of p, P, h, hh, i, ii, s, ss, d, dd, m, mm, M, MM, 
  * MM : full textual representation of a month, such as January or March
  * yy : two digit representation of a year
  * yyyy : full numeric representation of a year, 4 digits
+ * t : unix epoch timestamp
+ * Z : abbreviated timezone name
 
 ### weekStart
 
@@ -211,6 +213,12 @@ The lowest view that the datetimepicker should show.
 Number, String. Default: 4, 'decade'
 
 The highest view that the datetimepicker should show.
+
+### clearBtn
+
+Boolean. Default: false
+
+If true, displays a "Clear" button at the bottom of the datetimepicker to clear the current selection. Moreover, the datetimepicker will be closed if autoclose is set to true.
 
 ### todayBtn
 
@@ -290,6 +298,23 @@ Number. Default: undefined
 
 zIndex value is being automatically calculated based on the DOM tree, where we seek the highest value. To skip this process you can set the value manually.
 
+### timezone
+
+String. Default: Clients current timezone abbreviated name
+
+You can allow the viewer to display the date along with the given timezone. Note that this has to be used in conjunction with the `Z` format option. Example below: 
+
+
+```javascript
+$('#date-end').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii P Z'
+        timezone: 'GMT'
+    });
+```
+
+![](http://s32.postimg.org/55x4fud05/Screen_Shot_2016_05_17_at_5_43_34_PM.png)
+
+
 ### onRender
 
 This event is fired when a day is rendered inside the datepicker. Should return a string. Return 'disabled' to disable the day from being selected.
@@ -298,7 +323,7 @@ This event is fired when a day is rendered inside the datepicker. Should return 
 $('#date-end')
     .datetimepicker({
         onRender: function(date) {
-            return ev.date.valueOf() < date-start-display.valueOf() ? ' disabled' : '';
+            return date.valueOf() < date-start-display.valueOf() ? ' disabled' : '';
         }
     });
 ```
@@ -476,6 +501,24 @@ Omit hoursDisabled (or provide an otherwise falsey value) to unset the disabled 
 ```javascript
 $('#datetimepicker').datetimepicker('setHoursDisabled');
 $('#datetimepicker').datetimepicker('setHoursDisabled', null);
+```
+
+### setInitialDate
+
+Arguments:
+
+* setInitialDate (String)
+
+Sets a new inital date on the datetimepicker.
+
+```javascript
+$('#datetimepicker').datetimepicker('setInitialDate', '2012-12-31');
+```
+
+Get the inital date on the datetimepicker.
+
+```javascript
+$('#datetimepicker').datetimepicker('getInitialDate');
 ```
 
 ## Events
